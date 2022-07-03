@@ -67,7 +67,7 @@ authRouter.post("/api/signin", async (req, res) => {
 
 // Get User Data
 
-authRouter.get("/getInfo", auth, async (req, res) => {
+authRouter.get("/api/getInfo", auth, async (req, res) => {
   const user = await User.findById(req.user);
 
   res.json({ data: { token: req.token, ...user._doc } });
