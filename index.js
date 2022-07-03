@@ -30,6 +30,6 @@ mongoose
     console.log("DID'T CONNECT TO DB 😡😠");
   });
 
-app.listen(PORT, "192.168.1.211", () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`🚀🚀 Server is rocking on port 🚀🚀 ${PORT} 💃💃`);
 });
