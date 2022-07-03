@@ -30,10 +30,7 @@ authRouter.post("/api/signup", async (req, res) => {
     user = await user.save();
     res.json({ data: user });
   } catch (error) {
-    res
-      // .sendStatus({ success: false })
-      .status(500)
-      .json({ error: error.message });
+    res.status(500).json({ error: error.message });
   }
 });
 
@@ -46,12 +43,9 @@ authRouter.post("/api/signin", async (req, res) => {
     const user = await User.findOne({ email });
 
     if (!user) {
-      return (
-        res
-          // .sendStatus({ success: false })
-          .status(400)
-          .json({ msg: "User with this email does not exist!" })
-      );
+      return res
+        .status(400)
+        .json({ msg: "User with this email does not exist!" });
     }
 
     // compare password
@@ -59,12 +53,7 @@ authRouter.post("/api/signin", async (req, res) => {
     const isMatch = await bcrypt.compare(password, user.password);
 
     if (!isMatch) {
-      return (
-        res
-          // .sendStatus({ success: false })
-          .status(400)
-          .json({ msg: "Incorrent password!!" })
-      );
+      return res.status(400).json({ msg: "Incorrent password!!" });
     }
 
     const token = jwt.sign({ id: user._id }, "passwordKey");
