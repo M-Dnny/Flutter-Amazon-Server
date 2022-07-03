@@ -2,6 +2,7 @@ const express = require("express");
 const User = require("../models/user");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const auth = require("../middlewares/auth");
 
 const authRouter = express.Router();
 
@@ -62,6 +63,14 @@ authRouter.post("/api/signin", async (req, res) => {
   } catch (error) {
     res.status().json({ error: error.message });
   }
+});
+
+// Get User Data
+
+authRouter.get("/getInfo", auth, async (req, res) => {
+  const user = await User.findById(req.user);
+
+  res.json({ data: { token: req.token, ...user._doc } });
 });
 
 module.exports = authRouter;
