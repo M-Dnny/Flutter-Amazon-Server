@@ -28,10 +28,10 @@ authRouter.post("/api/signup", async (req, res) => {
     });
 
     user = await user.save();
-    res.sendStatus({ success: true }).json({ data: user });
+    res.json({ data: user });
   } catch (error) {
     res
-      .sendStatus({ success: false })
+      // .sendStatus({ success: false })
       .status(500)
       .json({ error: error.message });
   }
@@ -47,7 +47,7 @@ authRouter.post("/api/signin", async (req, res) => {
 
     if (!user) {
       return res
-        .sendStatus({ success: false })
+        // .sendStatus({ success: false })
         .status(400)
         .json({ msg: "User with this email does not exist!" });
     }
@@ -58,7 +58,7 @@ authRouter.post("/api/signin", async (req, res) => {
 
     if (!isMatch) {
       return res
-        .sendStatus({ success: false })
+        // .sendStatus({ success: false })
         .status(400)
         .json({ msg: "Incorrent password!!" });
     }
