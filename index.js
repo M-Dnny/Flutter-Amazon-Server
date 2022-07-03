@@ -7,7 +7,7 @@ const app = express();
 
 const db =
   "mongodb+srv://danish:nV6XWdX6L2zeMkfU@cluster0.p8yxk.mongodb.net/?retryWrites=true&w=majority";
-const PORT = 8080;
+const PORT = 3000;
 
 // MiddleWare
 
