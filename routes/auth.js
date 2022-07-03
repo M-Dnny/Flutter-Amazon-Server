@@ -23,8 +23,7 @@ authRouter.post("/api/signup", async (req, res) => {
     let user = new User({
       name,
       email,
-      // password: hasedPassword,
-      password,
+      password: hasedPassword,
     });
 
     user = await user.save();
