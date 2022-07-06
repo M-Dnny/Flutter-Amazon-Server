@@ -19,6 +19,7 @@ authRouter.post("/api/signup", async (req, res) => {
       //   .status(400)
       //   .json({ msg: "User with same email already exists" });
       return res.send({
+        success:'false',
         message: "User with same email already exists",
       });
     }
