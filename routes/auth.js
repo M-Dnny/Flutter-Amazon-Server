@@ -19,7 +19,7 @@ authRouter.post("/api/signup", async (req, res) => {
       //   .status(400)
       //   .json({ msg: "User with same email already exists" });
       return res.send({
-        success:'false',
+        success: "false",
         message: "User with same email already exists",
       });
     }
@@ -33,7 +33,11 @@ authRouter.post("/api/signup", async (req, res) => {
     });
 
     user = await user.save();
-    res.json({ data: user });
+    res.send({
+      success: "true",
+      message: "New user has been created",
+      data: user,
+    });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
