@@ -15,9 +15,12 @@ authRouter.post("/api/signup", async (req, res) => {
     const existUser = await User.findOne({ email });
 
     if (existUser) {
-      return res
-        .status(400)
-        .json({ msg: "User with same email already exists" });
+      // return res
+      //   .status(400)
+      //   .json({ msg: "User with same email already exists" });
+      return res.sendDate({
+        message: "User with same email already exists",
+      });
     }
 
     const hasedPassword = await bcrypt.hash(password, 8);
